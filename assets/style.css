@@ -16,65 +16,89 @@ header {
   padding: 15px 0;
 }
 
+header nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 header .site-title {
   font-size: 1.5rem;
   font-weight: bold;
-  display: inline-block;
-  margin-right: 20px;
+  margin-right: 25px;
 }
 
-header .nav a {
+header .nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Links and dropdown button */
+header .nav a,
+header .dropbtn {
   color: #fff;
   text-decoration: none;
-  margin-right: 15px;
   font-weight: bold;
+  cursor: pointer;
+  padding: 8px 10px;
 }
 
-header .nav a:hover {
+header .nav a:hover,
+header .dropbtn:hover {
   text-decoration: underline;
 }
 
 /* =======================
-   Hero Banner Image
+   Navigation Dropdown
    ======================= */
-.hero-banner .hero-image {
-  width: 100%;
-  height: auto;
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  font: inherit;
+  color: #fff;
+}
+
+.dropbtn::after {
+  content: " ▾"; /* arrow */
+  font-size: 0.8em;
+  margin-left: 3px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  min-width: 260px;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  z-index: 1000;
+  padding-top: 6px; /* prevents hover gap */
+}
+
+/* Dropdown links */
+.dropdown-content a {
   display: block;
+  padding: 10px 14px;
+  color: #000 !important;
+  text-decoration: none;
+  font-weight: normal;
+  white-space: nowrap;
 }
 
-/* =======================
-   Hero Text Below Image
-   ======================= */
-.hero-text {
-  text-align: center;
-  color: #000; /* black text */
-  margin: 20px 0 40px 0;
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
 }
 
-.hero-text h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
-
-.hero-text p {
-  font-size: 1.2rem;
-  line-height: 1.5;
-}
-
-/* =======================
-   Page Headings
-   ======================= */
-main h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #2a5d84;
-}
-
-main p {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 1.1rem;
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
 }
 
 /* =======================
@@ -88,13 +112,21 @@ main p {
   justify-content: center;
 }
 
+/* Generic Card */
 .card {
+  position: relative;
   flex: 1 1 300px;
-  background-color: #f5f5f5;
+  min-height: 240px;
+  border-radius: 10px;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #f5f5f5; /* default gray */
+  border: 1px solid #ddd;
+  color: #000;
+  text-shadow: none;
+  overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
+  background-size: cover;
+  background-position: center;
 }
 
 .card:hover {
@@ -102,66 +134,54 @@ main p {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.card h3 {
-  color: #1f3f5e;
-  margin-bottom: 10px;
+/* =======================
+   Amenities Page Cards
+   ======================= */
+.amenities-page .card {
+  position: relative;
+  color: #fff; /* white text */
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  background-size: cover;
+  background-position: center;
+  border: none;
+  overflow: hidden;
+  flex: 1 1 300px;
+  min-height: 240px;
+  border-radius: 10px;
+  padding: 20px;
 }
 
-.card p {
-  line-height: 1.5;
+/* Overlay for readability */
+.amenities-page .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.amenities-page .card h3,
+.amenities-page .card p {
+  position: relative;
+  z-index: 2; /* make sure text appears above overlay */
+}
+
+/* Hover effect */
+.amenities-page .card:hover::after {
+  background: rgba(0,0,0,0.1);
 }
 
 /* =======================
-   Resident Resources Section
+   Card background images
    ======================= */
-.resident-resources {
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #f0f8ff;
-  border-radius: 8px;
-}
-
-.resident-resources h2 {
-  color: #2a5d84;
-  margin-bottom: 15px;
-}
-
-.resident-resources h3 {
-  color: #1f3f5e;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.resident-resources p {
-  line-height: 1.5;
-  font-size: 1rem;
-}
-
-.resident-resources a {
-  color: #1f78b4;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.resident-resources a:hover {
-  text-decoration: underline;
-}
-
-.resident-resources em {
-  display: block;
-  margin-top: 10px;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.resident-resources .resource-card {
-  margin-bottom: 20px;
-  padding: 15px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
+.card-1 { background-image: url("gate.jpg"); }
+.card-2 { background-image: url("lakehouse.jpg"); }
+.card-3 { background-image: url("gate.jpg"); }
+.card-4 { background-image: url("pool.jpg"); }
+.card-5 { background-image: url("grills.jpg"); }
+.card-6 { background-image: url("playground.jpeg"); }
+.card-7 { background-image: url("dog_park.jpeg"); }
 
 /* =======================
    Footer
@@ -174,10 +194,6 @@ footer {
   margin-top: 40px;
 }
 
-footer .small {
-  font-size: 0.9rem;
-}
-
 /* =======================
    Responsive Adjustments
    ======================= */
@@ -187,8 +203,13 @@ footer .small {
     align-items: center;
   }
 
-  header .nav a {
+  header .nav a,
+  .dropbtn {
     display: block;
     margin: 5px 0;
+  }
+
+  .dropdown-content {
+    min-width: 100%;
   }
 }
