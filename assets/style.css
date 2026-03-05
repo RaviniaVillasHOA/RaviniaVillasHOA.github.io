@@ -22,10 +22,17 @@ header nav {
   flex-wrap: wrap;
 }
 
-header .site-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-right: 25px;
+header .site-title a {
+  color: #fff !important;       /* force white text */
+  text-decoration: none;        /* remove underline */
+  font-weight: bold;             /* match site-title style */
+  font-size: 1.5rem;            /* match site-title size */
+}
+
+header .site-title a:hover,
+header .site-title a:visited {
+  color: #fff !important;       /* stay white on hover and visited */
+  text-decoration: underline;        /* no underline on hover */
 }
 
 header .nav {
