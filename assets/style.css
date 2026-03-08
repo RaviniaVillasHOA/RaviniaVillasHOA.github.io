@@ -139,22 +139,31 @@ header .dropbtn:hover {
   min-height: auto;          /* let card grow naturally */
 }
 
+.card p {
+  margin: 0;
+}
+
+.card p + p {
+  margin-top: 0.5em;
+}
 
 /* Generic Card */
 .card {
-  position: relative;
-  border-radius: 10px;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  color: #000;
-  text-shadow: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-  background-size: cover;
-  background-position: center;
+    position: relative;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #000;
+    text-shadow: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-size: cover;
+    background-position: center;
+    
+    display: flex;
+    flex-direction: column;    /* ensures content stacks */
 
-  display: flex;
-  flex-direction: column;    /* ensures content stacks */
+    font-size: 1.3rem;   /* increase default text size */
 }
 
 
